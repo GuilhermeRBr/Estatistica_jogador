@@ -15,25 +15,18 @@ def jogador():
             jogadores.append(dados.copy())
             gols.clear()
             while True:
-                opcao = str(input('Quer continuar? [S/N]: ')).lower()
-                if opcao in 'sn':
+                opcao = str(input('Quer continuar? [S/N]: ')).strip().lower()
+                if opcao in ['s','n']:
                     break
-                print('Digite apenas S ou N.')
+                elif not opcao:
+                    print('Você não digitou nada! Por favor, digite S ou N.')
+                else:
+                    print('Digite apenas S ou N.')
             print('-'*35)    
             if opcao == 'n':
                 break
     except Exception as e:
         print('Algo deu errado!')
-
-
-def tabela_jogadores():
-
-    print(f'{'Cod':^5} {'Nome':^10} {'Gols':^15} {'Total':^10}')
-    for pos in range(len(jogadores)):
-
-        print(f'\n{pos:^5}   {jogadores[pos]['nome']:^5}   {jogadores[pos]['gols']}   {jogadores[pos]['total']:^}')
-
-    print('-'*35) 
 
 
 def mostrar_dados():
@@ -50,8 +43,3 @@ def mostrar_dados():
                 print(f'    No jogo {pos+1} fez {item} gols')
             print('-'*35) 
 
-jogador()
-
-tabela_jogadores()
-
-mostrar_dados()
